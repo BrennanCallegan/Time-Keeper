@@ -1,5 +1,4 @@
-import { Component, NgModule, ViewChild } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { Component, ViewChild, ChangeDetectorRef} from '@angular/core';
 import { CountdownComponent, CountdownConfig, CountdownEvent } from 'ngx-countdown';
 
 @Component({
@@ -11,26 +10,26 @@ import { CountdownComponent, CountdownConfig, CountdownEvent } from 'ngx-countdo
 export class Pomodoro {
   @ViewChild('cd')
   public countdown!: CountdownComponent;
+
   CountdownConfig: CountdownConfig = {
-    leftTime: 1500000,
+    leftTime: 1500,
     demand: true,
     notify: 0
   };
-  minutes: number = 0;
-  seconds: number = 0;
 
-  countdownTimer: any = { minutes: 0, seconds: 0 };
+  countdownTimer: {minutes: number, seconds: number} = { 
+    minutes: Math.floor((1500 % (60 * 60)) / 60), 
+    seconds: Math.floor(1500 % 60), 
+  };
+
+  constructor(private cdr: ChangeDetectorRef) { }
 
   handleCountdownEvent(event: CountdownEvent){
-    setTimeout(() => {
-      let leftTime = event.left / 1000;
-      this.countdownTimer = {
-        days: Math.floor(leftTime / (1000 * 60 * 60 * 24)),
-        hours: Math.floor((leftTime % (24 * 60 * 60)) / (60 * 60)),
-        minutes: Math.floor((leftTime % (60 * 60)) / 60),
-        seconds: Math.floor(leftTime % 60),
-      };
-    });
+    let leftTime = event.left / 1000;
+    this.countdownTimer = {
+      minutes: Math.floor((leftTime % (60 * 60)) / 60),
+      seconds: Math.floor(leftTime % 60),
+    };
   }
 
   startCountdown(){
@@ -45,7 +44,42 @@ export class Pomodoro {
     this.countdown.pause();
   }
 
+  private updateCountdownTimerDisplay(leftTimeInSeconds: number){
+    this.countdownTimer = {
+      minutes: Math.floor((leftTimeInSeconds % (60 * 60)) / 60),
+      seconds: Math.floor(leftTimeInSeconds % 60),
+    }
+  }
+
   resetCountdown(){
     this.countdown.restart();
+    this.updateCountdownTimerDisplay(this.CountdownConfig.leftTime!);
+    this.cdr.detectChanges();
+  }
+
+  private setTimerMode(leftTime: number){
+    this.CountdownConfig = {
+      leftTime: leftTime,
+      demand: true,
+      notify: 0
+    };
+
+    this.updateCountdownTimerDisplay(leftTime);
+    this.cdr.detectChanges();
+    setTimeout(() => {
+      this.countdown.restart();
+    }, 0);
+  }
+
+  pomodoroTimer(){
+    this.setTimerMode(1500);
+  }
+
+  longRestTimer(){
+    this.setTimerMode(600);
+  }
+
+  shortRestTimer(){
+    this.setTimerMode(300);
   }
 }
