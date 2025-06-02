@@ -1,0 +1,24 @@
+<div class="countdown-container">
+      <div class="countdown-box">
+        <div class="countdown-number">{{ countdownTimer.minutes }}</div>
+        <div class="countdown-label">Minutes</div>
+      </div>
+      <div class="countdown-box">
+        <div class="countdown-number">{{ countdownTimer.seconds }}</div>
+        <div class="countdown-label">Seconds</div>
+      </div>
+    </div>
+    <div class="controls-container">
+      <button (click)="startCountdown()">Start</button>
+      <button (click)="pauseCountdown()">Pause</button>
+      <button (click)="stopCountdown()">Stop</button>
+      <button (click)="resetCountdown()">Reset</button>
+      <button (click)="pomodoroTimer()">Pomodoro</button>
+      <button (click)="shortRestTimer()">Short Rest</button>
+      <button (click)="longRestTimer()">Long Rest</button>
+    </div>
+    <countdown
+      #cd
+      [config]="CountdownConfig"
+      (event)="handleCountdownEvent($event)"
+    ></countdown>
