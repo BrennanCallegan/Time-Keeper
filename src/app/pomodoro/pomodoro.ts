@@ -2,6 +2,8 @@ import { Component, ViewChild, ChangeDetectorRef} from '@angular/core';
 import { CountdownComponent, CountdownConfig, CountdownEvent } from 'ngx-countdown';
 
 @Component({
+  //All components are implicitly standalone. In order for a component to properly work 
+  // with a module, standalone must be set to false
   standalone: false,
   selector: 'app-pomodoro',
   templateUrl: './pomodoro.html',
@@ -9,6 +11,7 @@ import { CountdownComponent, CountdownConfig, CountdownEvent } from 'ngx-countdo
 })
 export class Pomodoro {
   @ViewChild('cd')
+  //Creates a non-null property, countdown, of type CountdownComponent
   public countdown!: CountdownComponent;
 
   CountdownConfig: CountdownConfig = {
@@ -17,6 +20,8 @@ export class Pomodoro {
     notify: 0
   };
 
+  //Since ngx-countdown only works in seconds, we need a way to convert numbers into a
+  //format more easily understandable by humans.
   countdownTimer: {minutes: number, seconds: number} = { 
     minutes: Math.floor((1500 % (60 * 60)) / 60), 
     seconds: Math.floor(1500 % 60), 
@@ -43,7 +48,8 @@ export class Pomodoro {
   pauseCountdown(){
     this.countdown.pause();
   }
-
+  
+  //Helper method to better calculate remaining time
   private updateCountdownTimerDisplay(leftTimeInSeconds: number){
     this.countdownTimer = {
       minutes: Math.floor((leftTimeInSeconds % (60 * 60)) / 60),
