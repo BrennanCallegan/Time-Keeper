@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
 import { Timer } from './timer';
 import { CountdownModule } from 'ngx-countdown';
 
@@ -7,7 +8,7 @@ import { CountdownModule } from 'ngx-countdown';
 
 
 @NgModule({
-  imports: [BrowserModule, CountdownModule],
+  imports: [BrowserModule, CountdownModule, FormsModule],
   declarations: [ Timer ],
   bootstrap: [ Timer ]
 })

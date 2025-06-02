@@ -14,10 +14,12 @@ export class Timer {
   //Creates a non-null property, countdown, of type CountdownComponent
   public countdown!: CountdownComponent;
 
+  userInput: number | undefined;
   CountdownConfig: CountdownConfig = {
-    leftTime: 1500,
+    leftTime: 0,
     demand: true,
-    notify: 0
+    notify: 0,
+    format: 'HH:mm:ss'
   };
 
   //Since ngx-countdown only works in seconds, we need a way to convert numbers into a
@@ -38,6 +40,10 @@ export class Timer {
   }
 
   startCountdown(){
+    this.CountdownConfig = {
+         leftTime: this.userInput,
+         format: 'mm:ss',
+       };
     this.countdown.begin();
   }
 
@@ -61,31 +67,5 @@ export class Timer {
     this.countdown.restart();
     this.updateCountdownTimerDisplay(this.CountdownConfig.leftTime!);
     this.cdr.detectChanges();
-  }
-
-  private setTimerMode(leftTime: number){
-    this.CountdownConfig = {
-      leftTime: leftTime,
-      demand: true,
-      notify: 0
-    };
-
-    this.updateCountdownTimerDisplay(leftTime);
-    this.cdr.detectChanges();
-    setTimeout(() => {
-      this.countdown.restart();
-    }, 0);
-  }
-
-  pomodoroTimer(){
-    this.setTimerMode(1500);
-  }
-
-  longRestTimer(){
-    this.setTimerMode(600);
-  }
-
-  shortRestTimer(){
-    this.setTimerMode(300);
   }
 }
