@@ -1,10 +1,10 @@
-.countdown-container {
+.timer-container {
         display: flex;
         justify-content: center;
         align-items: center;
         margin: 20px 0;
       }
-      .countdown-box {
+      .display-section {
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -17,7 +17,7 @@
         box-shadow: 0px 0px 5px 0px #ccc;
       }
 
-      .countdown-number {
+      .timer-number {
         font-size: 60px;
         font-weight: bold;
       }

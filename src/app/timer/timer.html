@@ -1,22 +1,36 @@
-<div class="countdown-container">
-      <div class="countdown-box">
-        <div class="countdown-number">{{ countdownTimer.minutes }}</div>
-        <div class="countdown-label">Minutes</div>
-      </div>
-      <div class="countdown-box">
-        <div class="countdown-number">{{ countdownTimer.seconds }}</div>
-        <div class="countdown-label">Seconds</div>
-      </div>
+<div class="timer-container">
+  <div class="input-section">
+    <label for="countdownInput">Set Countdown (seconds):</label>
+    <input id="countdownInput" type="number" [(ngModel)]="userInput" placeholder="Enter seconds">
+    <button (click)="setCountdown()">Set</button>
+  </div>
+
+  <div class="display-section">
+    <div class="timer-number">
+      <span>{{ formatTime(hours) }}</span>
     </div>
-    <div class="controls-container">
-      <input type="number" [(ngModel)]="userInput" placeholder="Enter time in seconds">
-      <button (click)="startCountdown()">Start</button>
-      <button (click)="pauseCountdown()">Pause</button>
-      <button (click)="stopCountdown()">Stop</button>
-      <button (click)="resetCountdown()">Reset</button>
+  </div>
+  <div class="timer-number">
+      <p>:</p>
     </div>
-    <countdown
-      #cd
-      [config]="CountdownConfig"
-      (event)="handleCountdownEvent($event)"
-    ></countdown>
+  <div class="display-section">
+    <div class="timer-number">
+      <span>{{ formatTime(minutes) }}</span>
+    </div>
+  </div>
+  <div class="timer-number">
+      <p>:</p>
+    </div>
+  <div class="display-section">
+    <div class="timer-number">
+      <span>{{ formatTime(seconds) }}</span>
+    </div>
+  </div>
+  
+
+  <div class="controls-container">
+    <button (click)="startTimer()">Start</button>
+    <button (click)="stopTimer()">Stop</button>
+    <button (click)="resetTimer()">Reset</button>
+  </div>
+</div>
