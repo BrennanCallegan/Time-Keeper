@@ -1,34 +1,45 @@
-import { Component } from '@angular/core';
-import { formatDate } from '@angular/common';
+import { Component, ChangeDetectorRef, OnDestroy } from '@angular/core';
 
 @Component({
+  standalone: false,
   selector: 'app-clock',
-  imports: [],
   templateUrl: './clock.html',
   styleUrl: './clock.css'
 })
-export class Clock {
-  date: string | Date | undefined
-  dateTime: string | undefined;
+export class Clock implements OnDestroy {
+  hour: number = 0;
+  minute: number = 0;
+  second: number = 0;
+  ampm: string = '';
 
-  constructor() {
-    setInterval(() => {
-      this.getTime()
+  private intervalId: any;
+
+  constructor(private cdr: ChangeDetectorRef) {
+    this.getTime();
+    this.intervalId = setInterval(() => {
+      this.getTime();
+      this.cdr.detectChanges();
     }, 100);
   }
+  ngOnDestroy(): void {
+    if(this.intervalId){
+      clearInterval(this.intervalId);
+    }
+  }
 
-  getTime() {
-    this.date = new Date();
+  getTime(): void {
     const time = new Date();
 
-    this.dateTime = 
-      time.getHours() +
-      ":"
-      time.getMinutes() +
-      ":"
-      time.getSeconds();
+    let currentHour = time.getHours();
+    this.minute = time.getMinutes();
+    this.second = time.getSeconds();
 
-      this.date = formatDate(time, 'hh:mm:ss a', 'en-US');
+    this.ampm = currentHour >= 12 ? 'PM' : 'AM';
+    this.hour = currentHour % 12;
+    this.hour = this.hour ? this.hour : 12
+  }
 
+  formatTime(time: number) : string {
+    return time < 10 ? '0' + time : '' + time;
   }
 }
