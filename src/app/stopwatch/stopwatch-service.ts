@@ -50,4 +50,16 @@ export class TimerService {
     this.timer$.next(this.initialTime);
     this.isRunning = false;
   }
+
+  public getHours(totalSeconds: number) : number {
+    return Math.floor(totalSeconds / 3600);
+  }
+
+    public getMinutes(totalSeconds: number) : number {
+    return Math.floor((totalSeconds % 3600) / 60);
+  }
+
+    public getSeconds(totalSeconds: number) : number {
+    return Math.floor(totalSeconds % 60);
+  }
 }

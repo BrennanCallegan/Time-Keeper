@@ -1,4 +1,4 @@
-import { Component, OnDestroy } from '@angular/core';
+import { Component, OnDestroy, ChangeDetectorRef } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { TimerService } from './stopwatch-service';
 
@@ -9,23 +9,32 @@ import { TimerService } from './stopwatch-service';
   styleUrl: './stopwatch.css'
 })
 export class Stopwatch implements OnDestroy {
+  //Ensures that stopWatch$ is properly unsubscribed from to prevent memory leaks
   ngOnDestroy(): void {
-    throw new Error('Method not implemented.');
+    this.timerService.stopCount();
+    this.subscription.unsubscribe();
   }
   
-  counter: number = 0;
+  hours: number = 0;
+  minutes: number = 0;
+  seconds: number = 0;
 
   //Manages observable stream from TimerService
   private subscription: Subscription = new Subscription();
 
   //Injects TimerService. Dependency injection makes the service available in the component
-  constructor(private timerService : TimerService) {
+  constructor(private timerService : TimerService, private cdr: ChangeDetectorRef) {
     this.subscription.add(
       this.timerService.stopWatch$.subscribe(
         //Emited values are assigned to counter making the time visible on the page
-        (val: number) => this.counter = val
+        (totalSeconds: number) => {
+          this.hours = this.timerService.getHours(totalSeconds);
+          this.minutes = this.timerService.getMinutes(totalSeconds);
+          this.seconds = this.timerService.getSeconds(totalSeconds);
+          this.cdr.detectChanges();
+        }
       )
-    )
+    );
   }
 
   public startCount(): void {
@@ -38,5 +47,9 @@ export class Stopwatch implements OnDestroy {
 
     public resetCount(): void {
     this.timerService.resetCount()
+  }
+
+  formatTime(value: number): string {
+    return value < 10 ? '0' + value : '' + value;
   }
 }
