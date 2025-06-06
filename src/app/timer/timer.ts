@@ -1,7 +1,7 @@
 import { Component, OnDestroy, ChangeDetectorRef } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Subscription } from 'rxjs';
-import { TimerService } from './timer-module';
+import { TimerService } from './timer-service';
 import { CommonModule } from '@angular/common';
 
 @Component({
