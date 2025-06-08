@@ -1,21 +1,41 @@
-<div class="countdown-container">
+<div class="timeKeeper-container">
       <div class="countdown-box">
-        <div class="countdown-number">{{ countdownTimer.minutes }}</div>
-        <div class="countdown-label">Minutes</div>
+        <div class="timeKeeper-number">{{ formatTime(countdownTimer.minutes) }}</div>
+      </div>
+      <div class="timeKeeper-divider">
+        <p>:</p>
       </div>
       <div class="countdown-box">
-        <div class="countdown-number">{{ countdownTimer.seconds }}</div>
-        <div class="countdown-label">Seconds</div>
+        <div class="timeKeeper-number">{{ formatTime(countdownTimer.seconds) }}</div>
       </div>
     </div>
     <div class="controls-container">
-      <button (click)="startCountdown()">Start</button>
-      <button (click)="pauseCountdown()">Pause</button>
-      <button (click)="stopCountdown()">Stop</button>
-      <button (click)="resetCountdown()">Reset</button>
-      <button (click)="pomodoroTimer()">Pomodoro</button>
-      <button (click)="shortRestTimer()">Short Rest</button>
-      <button (click)="longRestTimer()">Long Rest</button>
+      <button class="button" (click)="pomodoroTimer()">
+        <span class="text">&nbsp;pomodoro&nbsp;</span>
+        <span aria-hidden="true" class="hover-text">&nbsp;pomodoro&nbsp;</span>
+      </button>
+      <button class="button" (click)="shortRestTimer()">
+        <span class="text">&nbsp;short rest&nbsp;</span>
+        <span aria-hidden="true" class="hover-text">&nbsp;short rest&nbsp;</span>
+      </button>
+      <button class="button" (click)="longRestTimer()">
+        <span class="text">&nbsp;long rest&nbsp;</span>
+        <span aria-hidden="true" class="hover-text">&nbsp;long rest&nbsp;</span>
+      </button>
+    </div>
+    <div class="controls-container">
+      <button class="button" (click)="startCountdown()">
+        <span class="text">&nbsp;start&nbsp;</span>
+        <span aria-hidden="true" class="hover-text">&nbsp;start&nbsp;</span>
+      </button>
+      <button class="button" (click)="pauseCountdown()">
+        <span class="text">&nbsp;pause&nbsp;</span>
+        <span aria-hidden="true" class="hover-text">&nbsp;pause&nbsp;</span>
+      </button>
+      <button class="button" (click)="resetCountdown()">
+        <span class="text">&nbsp;reset&nbsp;</span>
+        <span aria-hidden="true" class="hover-text">&nbsp;reset&nbsp;</span>
+      </button>
     </div>
     <countdown
       #cd

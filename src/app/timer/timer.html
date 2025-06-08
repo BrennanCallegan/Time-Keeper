@@ -1,36 +1,48 @@
-<div class="timer-container">
+<div class="timeKeeper-container">
   <div class="input-section">
     <label for="countdownInput">Set Countdown (seconds):</label>
     <input id="countdownInput" type="number" [(ngModel)]="userInput" placeholder="Enter seconds">
-    <button (click)="setCountdown()">Set</button>
+    <button class="button" (click)="setCountdown()">
+        <span class="text">&nbsp;set&nbsp;</span>
+        <span aria-hidden="true" class="hover-text">&nbsp;set&nbsp;</span>
+      </button>
   </div>
 
   <div class="display-section">
-    <div class="timer-number">
+    <div class="timeKeeper-number">
       <span>{{ formatTime(hours) }}</span>
     </div>
   </div>
-  <div class="timer-number">
+  <div class="timeKeeper-divider">
       <p>:</p>
     </div>
   <div class="display-section">
-    <div class="timer-number">
+    <div class="timeKeeper-number">
       <span>{{ formatTime(minutes) }}</span>
     </div>
   </div>
-  <div class="timer-number">
+  <div class="timeKeeper-divider">
       <p>:</p>
     </div>
   <div class="display-section">
-    <div class="timer-number">
+    <div class="timeKeeper-number">
       <span>{{ formatTime(seconds) }}</span>
     </div>
   </div>
   
 
   <div class="controls-container">
-    <button (click)="startTimer()">Start</button>
-    <button (click)="stopTimer()">Stop</button>
-    <button (click)="resetTimer()">Reset</button>
+    <button class="button" (click)="startTimer()">
+        <span class="text">&nbsp;start&nbsp;</span>
+        <span aria-hidden="true" class="hover-text">&nbsp;start&nbsp;</span>
+      </button>
+    <button class="button" (click)="stopTimer()">
+        <span class="text">&nbsp;stop&nbsp;</span>
+        <span aria-hidden="true" class="hover-text">&nbsp;stop&nbsp;</span>
+      </button>
+    <button class="button" (click)="resetTimer()">
+        <span class="text">&nbsp;reset&nbsp;</span>
+        <span aria-hidden="true" class="hover-text">&nbsp;reset&nbsp;</span>
+      </button>
   </div>
 </div>

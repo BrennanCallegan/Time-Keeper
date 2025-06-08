@@ -88,4 +88,8 @@ export class Pomodoro {
   shortRestTimer(){
     this.setTimerMode(300);
   }
+
+  formatTime(time: number) : string {
+    return time < 10 ? '0' + time : '' + time;
+  }
 }

@@ -1,15 +1,14 @@
-<div class="stopwatch-container">
-      <div class="countdown-box">
-        <div class="countdown-number">{{ formatTime(hours) }}</div>
-        <div class="countdown-label">Hours</div>
+<div class="timeKeeper-container">
+      <div class="timeKeeper-box">
+        <div class="timeKeeper-number">{{ formatTime(hours) }}</div>
       </div>
-      <div class="countdown-box">
-        <div class="countdown-number">{{ formatTime(minutes) }}</div>
-        <div class="countdown-label">Minutes</div>
+      <div class="timeKeeper-divider"><p>:</p></div>
+      <div class="timeKeeper-box">
+        <div class="timeKeeper-number">{{ formatTime(minutes) }}</div>
       </div>
-      <div class="countdown-box">
-        <div class="countdown-number">{{ formatTime(seconds) }}</div>
-        <div class="countdown-label">Seconds</div>
+      <div class="timeKeeper-divider"><p>:</p></div>
+      <div class="timeKeeper-box">
+        <div class="timeKeeper-number">{{ formatTime(seconds) }}</div>
       </div>
     </div>
     <div class="controls-container">
