@@ -1,5 +1,5 @@
 html, body{
-    background-color: #212121;
+    background-color: #145a76;
 }
 
 .timeKeeper-box {
@@ -8,11 +8,11 @@ html, body{
   justify-content: center;
   align-items: center;
   margin: 0 10px;
-  background-color: #f2f2f2;
+  background-color: #0a1f27;
   padding: 10px;
   border-radius: 5px;
-  color: #000000;
-  box-shadow: 0px 0px 5px 0px #ccc;
+  color: #e0d0b8;
+  box-shadow: 0px 0px 5px 0px #363636;
 }
 
 .timeKeeper-container {
@@ -25,7 +25,7 @@ html, body{
 .timeKeeper-divider {
   font-size: 100px;
   font-weight: bold;
-  color: #f2f2f2;
+  color: #e0d0b8;
 }
 
 .timeKeeper-number {
@@ -43,7 +43,7 @@ html, body{
   cursor: pointer;
   --border-right: 6px;
   --text-stroke-color: rgba(255,255,255,0.6);
-  --animation-color: #ef1e20;
+  --animation-color: #87ceeb;
   --fs-size: 2em;
   letter-spacing: 3px;
   text-decoration: none;
@@ -72,6 +72,14 @@ html, body{
   filter: drop-shadow(0 0 15px var(--animation-color))
 }
 
+.button:focus {
+color: #87ceeb;
+    -webkit-text-stroke: 2px var(--animation-color);
+      filter: drop-shadow(0 0 30px var(--animation-color))
+
+
+}
+
 .controls-container {
   display: flex;
   justify-content: center;
@@ -84,9 +92,9 @@ html, body{
   justify-content: center;
   align-items: center;
   margin: 0 10px;
-  background-color: #f2f2f2;
+  background-color: #0a1f27;
   padding: 10px;
   border-radius: 5px;
-  color: #000000;
+  color: #e0d0b8;
   box-shadow: 0px 0px 5px 0px #ccc;
 }

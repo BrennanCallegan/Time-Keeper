@@ -1,0 +1,23 @@
+.countdownInput {
+  background: none;
+  border: none;
+  outline: none;
+  max-width: 190px;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 9999px;
+  box-shadow: inset 2px 5px 10px #0a1f27;
+  color: #fff;
+}
+
+/* Hides arrows on Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Hides arrows on Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
