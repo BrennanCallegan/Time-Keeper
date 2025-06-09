@@ -7,10 +7,10 @@ import { Clock } from './clock/clock';
 
 //Add new components here
 export const routes: Routes = [
-    {path: '', component: Pomodoro},
+    {path: '', component: Clock},
     {path: 'timer', component: Timer},
     {path: 'stopwatch', component: Stopwatch},
-    {path: 'clock', component: Clock}
+    {path: 'pomodoro', component: Pomodoro}
 ];
 
 @NgModule({

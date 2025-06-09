@@ -1,17 +1,20 @@
-<div class="clock-container">
-      <div class="clock-box">
-        <div class="clock-number">{{ formatTime(hour) }}</div>
-      </div>
-      <div class="clock-number"> <p>:</p> </div>
-      <div class="clock-box">
-        <div class="clock-number">{{ formatTime(minute) }}</div>
-      </div>
-      <div class="clock-number"> <p>:</p> </div>
-      <div class="clock-box">
-        <div class="clock-number">{{ formatTime(second) }}</div>
-      </div>
-      <div class="clock-box">
-        <div class="clock-number">{{ ampm }}</div>
-      </div>
-    </div>
+<div class="timeKeeper-container">
+  <div class="timeKeeper-box">
+    <div class="timeKeeper-number">{{ formatTime(hour) }}</div>
+  </div>
+
+  <div class="timeKeeper-divider"> <p>:</p> </div>
+  <div class="timeKeeper-box">
+    <div class="timeKeeper-number">{{ formatTime(minute) }}</div>
+  </div>
+
+  <div class="timeKeeper-divider"> <p>:</p> </div>
+  <div class="timeKeeper-box">
+    <div class="timeKeeper-number">{{ formatTime(second) }}</div>
+  </div>
+  
+  <div class="timeKeeper-box">
+    <div class="timeKeeper-number">{{ ampm }}</div>
+  </div>
+</div>
     

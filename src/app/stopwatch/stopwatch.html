@@ -1,19 +1,29 @@
-<div class="stopwatch-container">
-      <div class="countdown-box">
-        <div class="countdown-number">{{ formatTime(hours) }}</div>
-        <div class="countdown-label">Hours</div>
+<div class="timeKeeper-container">
+      <div class="timeKeeper-box">
+        <div class="timeKeeper-number">{{ formatTime(hours) }}</div>
       </div>
-      <div class="countdown-box">
-        <div class="countdown-number">{{ formatTime(minutes) }}</div>
-        <div class="countdown-label">Minutes</div>
+      <div class="timeKeeper-divider"><p>:</p></div>
+      <div class="timeKeeper-box">
+        <div class="timeKeeper-number">{{ formatTime(minutes) }}</div>
       </div>
-      <div class="countdown-box">
-        <div class="countdown-number">{{ formatTime(seconds) }}</div>
-        <div class="countdown-label">Seconds</div>
+      <div class="timeKeeper-divider"><p>:</p></div>
+      <div class="timeKeeper-box">
+        <div class="timeKeeper-number">{{ formatTime(seconds) }}</div>
       </div>
     </div>
     <div class="controls-container">
-      <button (click)="startCount()">Start</button>
-      <button (click)="stopCount()">Stop</button>
-      <button (click)="resetCount()">Reset</button>
+      <button class="button" (click)="startCount()">
+        <span class="text">&nbsp;start&nbsp;</span>
+        <span aria-hidden="true" class="hover-text">&nbsp;start&nbsp;</span>
+      </button>
+
+      <button class="button" (click)="stopCount()">
+        <span class="text">&nbsp;stop&nbsp;</span>
+        <span aria-hidden="true" class="hover-text">&nbsp;stop&nbsp;</span>
+      </button>
+
+      <button class="button" (click)="resetCount()">
+        <span class="text">&nbsp;reset&nbsp;</span>
+        <span aria-hidden="true" class="hover-text">&nbsp;reset&nbsp;</span>
+      </button>
     </div>
